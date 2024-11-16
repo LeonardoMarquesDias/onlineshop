@@ -8,6 +8,8 @@ module.exports = {
   theme: {
     extend: {
       screens: {
+        'mobile': '100px',
+
         'i12pro': '390px',
         
         'i14promax': '430px',

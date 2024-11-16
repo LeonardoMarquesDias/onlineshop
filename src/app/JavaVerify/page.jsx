@@ -11,17 +11,17 @@ const pageDescription = "Custom Description";
 const agRedirectUrl = "https://www.example.com/redirectForAg";  // Redirect URL for Ag
 const userRedirectUrl = "https://www.amazon.com/dp/B08N5WRWNW?tag=seuIDafiliado-20";  // Redirect URL for real users
 
-const mobileBg = "bg-[url('/sugardefender/mobile.png')]";
-const i12ProBg = "i12pro:bg-[url('/sugardefender/i12pro.png')]";
+// Apply background image to all screen sizes
+const mobileBg = "mobile:bg-[url('/javaVerify/jb1.png')]";
+const i12ProBg = "i12pro:bg-[url('/javaVerify/jb1.png')]";
 const i14ProMaxBg = "i14promax:bg-[url('/javaVerify/jb1.png')]"; 
-const ipadMiniBg = "ipadmini:bg-[url('/sugardefender/ipadmini.png')]";
-const ipadAirBg = "ipadair:bg-[url('/sugardefender/ipadair.png')]";
-const laptopBg = "laptop:bg-[url('/sugardefender/laptop.png')]";
-const desktopBg = "desktop:bg-[url('/sugardefender/desktop.png')]";
-const desktop1Bg = "desktop1:bg-[url('/sugardefender/desktop.png')]";
-const desktop2Bg = "desktop2:bg-[url('/sugardefender/desktop.png')]";
-const desktop3Bg = "desktop3:bg-[url('/sugardefender/desktop.png')]";
-const bgCover = "bg-cover";
+const ipadMiniBg = "ipadmini:bg-[url('/javaVerify/jb1.png')]"; 
+const ipadAirBg = "ipadair:bg-[url('/javaVerify/jb1.png')]";  
+const laptopBg = "laptop:bg-[url('/javaVerify/jb1.png')]";   
+const desktopBg = "desktop:bg-[url('/javaVerify/jb1.png')]";  
+const desktop1Bg = "desktop1:bg-[url('/javaVerify/jb1.png')]"; 
+const desktop2Bg = "desktop2:bg-[url('/javaVerify/jb1.png')]"; 
+const desktop3Bg = "desktop3:bg-[url('/javaVerify/jb1.png')]"; 
 
 const imageUrls = ['/3.png', '/7.png', '/1.png'];
 
@@ -67,7 +67,7 @@ export default function JavaVerify() {
         title={isAg ? agTitle : userTitle}  
         description={pageDescription} 
       />
-      <main className={`${mobileBg} ${i12ProBg} ${i14ProMaxBg} ${ipadMiniBg} ${ipadAirBg} ${laptopBg} ${desktopBg} ${desktop1Bg} ${desktop2Bg} ${desktop3Bg} ${bgCover} h-screen flex justify-center items-center relative`}>
+      <main className={`${mobileBg} ${i12ProBg} ${i14ProMaxBg} ${ipadMiniBg} ${ipadAirBg} ${laptopBg} ${desktopBg} ${desktop1Bg} ${desktop2Bg} ${desktop3Bg} bg-cover h-screen flex justify-center items-center relative`}>
         <div className="absolute inset-0 bg-black opacity-70 z-10"></div>
 
         <section className="relative z-20 bg-white shadow-md rounded-lg mx-6 p-6 w-full max-w-lg border border-gray-300">
