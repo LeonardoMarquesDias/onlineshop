@@ -53,10 +53,11 @@ export default function JavaVerify() {
   // Handle redirect based on checkbox
   const handleRedirect = () => {
     if (isChecked) {
-      // Redirect to appropriate URL
-      window.location.href = isAg ? agRedirectUrl : userRedirectUrl;
+      // Simply return the appropriate URL for Next.js Link
+      return isAg ? agRedirectUrl : userRedirectUrl;
     } else {
       alert("Please check the box to verify you are not a robot.");
+      return "#"; // Return a dummy link if not checked
     }
   };
 
@@ -102,15 +103,16 @@ export default function JavaVerify() {
             <label htmlFor="notAg" className="ml-2 text-gray-700">I'm not a robot</label>
           </div>
 
-          {/* Example Link for Amazon Affiliate */}
+          {/* Next.js Link wrapping the button for dynamic redirect */}
           <div className="mt-4">
-            <button 
-              type="button"
-              onClick={handleRedirect} // Trigger redirect function
-              className="w-full bg-blue-600 text-white py-2 rounded-md font-semibold hover:bg-blue-700 transition-all duration-300"
-            >
-              Submit
-            </button>
+            <Link href={handleRedirect()} passHref>
+              <button 
+                type="button"
+                className="w-full bg-blue-600 text-white py-2 rounded-md font-semibold hover:bg-blue-700 transition-all duration-300"
+              >
+                Submit
+              </button>
+            </Link>
           </div>
         </section>
       </main>
