@@ -24,7 +24,7 @@ module.exports = {
 
         'desktop2': '1920px',
 
-        'desktop2': '2560px',
+        'desktop3': '2560px',
       },
     },
   },

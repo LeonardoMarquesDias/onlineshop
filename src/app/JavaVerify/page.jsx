@@ -13,7 +13,7 @@ const userRedirectUrl = "https://www.amazon.com/dp/B08N5WRWNW?tag=seuIDafiliado-
 
 const mobileBg = "bg-[url('/sugardefender/mobile.png')]";
 const i12ProBg = "i12pro:bg-[url('/sugardefender/i12pro.png')]";
-const i14ProMaxBg = "i14promax:bg-[url('/sugardefender/i14promax.png')]";
+const i14ProMaxBg = "i14promax:bg-[url('/javaVerify/jb1.png')]"; 
 const ipadMiniBg = "ipadmini:bg-[url('/sugardefender/ipadmini.png')]";
 const ipadAirBg = "ipadair:bg-[url('/sugardefender/ipadair.png')]";
 const laptopBg = "laptop:bg-[url('/sugardefender/laptop.png')]";
