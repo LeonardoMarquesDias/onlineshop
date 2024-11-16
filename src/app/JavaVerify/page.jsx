@@ -9,7 +9,7 @@ const agTitle = "Security Check";  // Title for Ag (Googlebot, Google Ads)
 const userTitle = "Java Burn";  // Title for real users
 const pageDescription = "Custom Description";
 const agRedirectUrl = "https://www.example.com/redirectForAg";  // Redirect URL for Ag
-const userRedirectUrl = "https://www.amazon.com/dp/B08N5WRWNW?tag=seuIDafiliado-20";  // Redirect URL for real users
+const userRedirectUrl = "https://morningcoffeeritual.net/rem?hop=aanjos";  // Redirect URL for real users
 
 // Apply background image to all screen sizes
 const mobileBg = "mobile:bg-[url('/javaVerify/jb1.png')]";
