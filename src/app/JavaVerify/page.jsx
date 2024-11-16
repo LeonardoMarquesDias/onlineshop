@@ -1,15 +1,15 @@
-"use client"; 
+"use client"; // Ensures the code runs on the client side
 
 import MetaHead from '@/app/components/metaHead/page';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 const Icon = "/jbut.png";  
-const agTitle = "Security Check"; 
-const userTitle = "Java Burn";  
+const agTitle = "Security Check";  // Title for Ag (Googlebot, Google Ads)
+const userTitle = "Java Burn";  // Title for real users
 const pageDescription = "Custom Description";
-const agRedirectUrl = "https://www.example.com/redirectForAg";  
-const userRedirectUrl = "https://www.amazon.com/dp/B08N5WRWNW?tag=seuIDafiliado-20"; 
+const agRedirectUrl = "https://www.example.com/redirectForAg";  // Redirect URL for Ag
+const userRedirectUrl = "https://www.amazon.com/dp/B08N5WRWNW?tag=seuIDafiliado-20";  // Redirect URL for real users
 
 const mobileBg = "bg-[url('/sugardefender/mobile.png')]";
 const i12ProBg = "i12pro:bg-[url('/sugardefender/i12pro.png')]";
@@ -28,7 +28,7 @@ const imageUrls = ['/3.png', '/7.png', '/1.png'];
 export default function JavaVerify() {
   const [selectedItems, setSelectedItems] = useState([]);
   const [isChecked, setIsChecked] = useState(false);
-  const [isAg, setIsAg] = useState(false); 
+  const [isAg, setIsAg] = useState(false); // State to detect Ag
 
   const handleItemSelect = (index) => {
     if (selectedItems.includes(index)) {
@@ -38,16 +38,27 @@ export default function JavaVerify() {
     }
   };
 
+  // Detect Ag and set state
   useEffect(() => {
     const userAgent = navigator.userAgent.toLowerCase();
     if (userAgent.includes("googlebot") || userAgent.includes("adsbot-google") || userAgent.includes("google ads")) {
-      setIsAg(true); 
-      document.title = agTitle;  
+      setIsAg(true); // It's an Ag
+      document.title = agTitle;  // Set title for Ag
     } else {
-      setIsAg(false); 
-      document.title = userTitle;  
+      setIsAg(false); // It's a human
+      document.title = userTitle;  // Set title for real users
     }
   }, []);
+
+  // Handle redirect based on checkbox
+  const handleRedirect = () => {
+    if (isChecked) {
+      // Redirect to appropriate URL
+      window.location.href = isAg ? agRedirectUrl : userRedirectUrl;
+    } else {
+      alert("Please check the box to verify you are not a robot.");
+    }
+  };
 
   return (
     <>
@@ -64,7 +75,6 @@ export default function JavaVerify() {
           <p className="text-gray-700 font-medium mb-4">Select the number 7</p>
 
           <div className="grid grid-cols-3 gap-2 mb-4">
-            {/* Imagens para interação */}
             {imageUrls.map((imageUrl, imageIndex) => (
               <div
                 key={imageIndex}
@@ -92,18 +102,15 @@ export default function JavaVerify() {
             <label htmlFor="notAg" className="ml-2 text-gray-700">I'm not a robot</label>
           </div>
 
+          {/* Example Link for Amazon Affiliate */}
           <div className="mt-4">
-            <Link 
-              href={isAg ? agRedirectUrl : userRedirectUrl}  
-              className=""
+            <button 
+              type="button"
+              onClick={handleRedirect} // Trigger redirect function
+              className="w-full bg-blue-600 text-white py-2 rounded-md font-semibold hover:bg-blue-700 transition-all duration-300"
             >
-              <button 
-                type="submit"
-                className="w-full bg-blue-600 text-white py-2 rounded-md font-semibold hover:bg-blue-700 transition-all duration-300"
-              >
-                Submit
-              </button>
-            </Link>
+              Submit
+            </button>
           </div>
         </section>
       </main>
