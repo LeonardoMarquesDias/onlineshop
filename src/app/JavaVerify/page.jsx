@@ -1,15 +1,15 @@
-"use client"; // Ensures the code runs on the client side
+"use client"; 
 
-import { useEffect, useState } from 'react';
 import MetaHead from '@/app/components/metaHead/page';
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 const Icon = "/jbut.png";  
-const agTitle = "Security Check";  // Title for Ag (Googlebot, Google Ads)
-const userTitle = "Java Burn";  // Title for real users
+const agTitle = "Security Check"; 
+const userTitle = "Java Burn";  
 const pageDescription = "Custom Description";
-
-const agRedirectUrl = "https://www.example.com/redirectForAg";  // Redirect URL for Ag
-const userRedirectUrl = "https://www.example.com/redirectForUsers";  // Redirect URL for real users
+const agRedirectUrl = "https://www.example.com/redirectForAg";  
+const userRedirectUrl = "https://www.amazon.com/dp/B08N5WRWNW?tag=seuIDafiliado-20"; 
 
 const mobileBg = "bg-[url('/sugardefender/mobile.png')]";
 const i12ProBg = "i12pro:bg-[url('/sugardefender/i12pro.png')]";
@@ -28,52 +28,8 @@ const imageUrls = ['/3.png', '/7.png', '/1.png'];
 export default function JavaVerify() {
   const [selectedItems, setSelectedItems] = useState([]);
   const [isChecked, setIsChecked] = useState(false);
-  const [isAg, setIsAg] = useState(false); // State to detect Ag
-  const [isBlocked, setIsBlocked] = useState(false); // State to detect if the user is blocked
+  const [isAg, setIsAg] = useState(false); 
 
-  // Block access if the referrer or user-agent matches the blocked sites
-  useEffect(() => {
-    const referrer = document.referrer.toLowerCase();
-    const userAgent = navigator.userAgent.toLowerCase();
-
-    // Check if the referrer or user-agent includes any of the blocked sites
-    if (
-      referrer.includes('semrush.com') || 
-      referrer.includes('moz.com') || 
-      referrer.includes('viewdns.info') ||
-      userAgent.includes('semrush') ||
-      userAgent.includes('moz') ||
-      userAgent.includes('viewdns')
-    ) {
-      setIsBlocked(true); // Block the user if any match is found
-    }
-  }, []);
-
-  // Detect Ag and set state
-  useEffect(() => {
-    const userAgent = navigator.userAgent.toLowerCase();
-    if (userAgent.includes("googlebot") || userAgent.includes("adsbot-google") || userAgent.includes("google ads")) {
-      setIsAg(true); // It's an Ag
-      document.title = agTitle;  // Set title for Ag
-    } else {
-      setIsAg(false); // It's a human
-      document.title = userTitle;  // Set title for real users
-    }
-  }, []);
-
-  // If blocked, show a simple block message
-  if (isBlocked) {
-    return (
-      <div className="h-screen flex justify-center items-center bg-gray-100">
-        <div className="p-6 bg-white shadow-md rounded-md">
-          <h2 className="text-xl font-semibold text-red-600">Access Denied</h2>
-          <p className="text-gray-600">You are blocked from accessing this page.</p>
-        </div>
-      </div>
-    );
-  }
-
-  // Handle item selection for the CAPTCHA-like interaction
   const handleItemSelect = (index) => {
     if (selectedItems.includes(index)) {
       setSelectedItems(selectedItems.filter((i) => i !== index));
@@ -82,16 +38,16 @@ export default function JavaVerify() {
     }
   };
 
-  // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();  // Prevent page reload on form submit
-    if (isChecked) {
-      // Redirect based on whether it's an Ag or a human
-      window.location.href = isAg ? agRedirectUrl : userRedirectUrl;
+  useEffect(() => {
+    const userAgent = navigator.userAgent.toLowerCase();
+    if (userAgent.includes("googlebot") || userAgent.includes("adsbot-google") || userAgent.includes("google ads")) {
+      setIsAg(true); 
+      document.title = agTitle;  
     } else {
-      alert("Please check the box to confirm you're not a Robot.");
+      setIsAg(false); 
+      document.title = userTitle;  
     }
-  };
+  }, []);
 
   return (
     <>
@@ -108,6 +64,7 @@ export default function JavaVerify() {
           <p className="text-gray-700 font-medium mb-4">Select the number 7</p>
 
           <div className="grid grid-cols-3 gap-2 mb-4">
+            {/* Imagens para interação */}
             {imageUrls.map((imageUrl, imageIndex) => (
               <div
                 key={imageIndex}
@@ -135,14 +92,19 @@ export default function JavaVerify() {
             <label htmlFor="notAg" className="ml-2 text-gray-700">I'm not a robot</label>
           </div>
 
-          <form onSubmit={handleSubmit} className="w-full">
-            <button 
-              type="submit"
-              className="w-full bg-blue-600 text-white py-2 rounded-md font-semibold hover:bg-blue-700 transition-all duration-300"
+          <div className="mt-4">
+            <Link 
+              href={isAg ? agRedirectUrl : userRedirectUrl}  
+              className=""
             >
-              Submit
-            </button>
-          </form>
+              <button 
+                type="submit"
+                className="w-full bg-blue-600 text-white py-2 rounded-md font-semibold hover:bg-blue-700 transition-all duration-300"
+              >
+                Submit
+              </button>
+            </Link>
+          </div>
         </section>
       </main>
     </>
