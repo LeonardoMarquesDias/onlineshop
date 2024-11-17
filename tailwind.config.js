@@ -8,24 +8,19 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        'mobile': '100px',
-
-        'i12pro': '390px',
-        
-        'i14promax': '430px',
-    
-        'ipadmini': '768px',
-
-        'ipadair': '820px',
-  
-        'laptop': '1024px',
-  
-        'desktop': '1440px',
-
-        'desktop1': '1680px',
-
-        'desktop2': '1920px',
-
+        'iPhone11Pro': '375px',
+        'iPhone12ProMax': '379px',
+        'iPhone13mini': '360px',
+        'iPhone13Pro': '428px',
+        'iPhone15Pro': '393px',
+        'iPhone15ProMax': '430px',
+        'MacbookAirM2': '1280px',
+        'MacbookPro16': '1728px',
+        'iMac24': '1120px',
+        'MacbookAir': '1559px',
+        'Laptop': '1440px',
+        'Desktop1': '1680px',
+        'Desktop2': '1920px',
         'desktop3': '2560px',
       },
     },
