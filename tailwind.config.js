@@ -14,6 +14,13 @@ module.exports = {
         'iPhone13Pro': '428px',
         'iPhone15Pro': '393px',
         'iPhone15ProMax': '430px',
+
+        'iPadmini': '608px',
+        'iPad': '575px',
+        'iPadPro11': '581px',
+        'iPadAir5': '820x',
+
+
         'MacbookAirM2': '1280px',
         'MacbookPro16': '1728px',
         'iMac24': '1120px',

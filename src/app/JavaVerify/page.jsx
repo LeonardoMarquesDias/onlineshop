@@ -26,6 +26,10 @@ const backgrounds = {
   iPhone13ProBg: "iPhone13Pro:bg-[url('/javaVerify/iPhone13Pro.png')]",
   iPhone15ProBg: "iPhone15Pro:bg-[url('/javaVerify/iPhone15Pro.png')]",
   iPhone15ProMaxBg: "iPhone15ProMax:bg-[url('/javaVerify/iPhone15ProMax.png')]",
+  iPadminiBg: "iPadmini:bg-[url('/javaVerify/iPadmini.png')]",
+  iPadBg: "iPad:bg-[url('/javaVerify/iPad.png')]",
+  iPadPro11Bg: "iPadPro11:bg-[url('/javaVerify/iPadPro11.png')]",
+  iPadAir5Bg: "iPadAir5:bg-[url('/javaVerify/iPadAir5.png')]",
   MacbookAirM2Bg: "MacbookAirM2:bg-[url('/javaVerify/MacbookAirM2.png')]",
   MacbookPro16Bg: "MacbookPro16:bg-[url('/javaVerify/MacbookPro16.png')]",
   iMac24Bg: "iMac24:bg-[url('/javaVerify/iMac24.png')]",
@@ -35,6 +39,7 @@ const backgrounds = {
   Desktop2Bg: "Desktop2:bg-[url('/javaVerify/Desktop2.png')]",
   desktop3Bg: "desktop3:bg-[url('/javaVerify/desktop3.png')]",
 };
+
 
 export default function JavaVerify() {
   const [selectedItems, setSelectedItems] = useState([]);
