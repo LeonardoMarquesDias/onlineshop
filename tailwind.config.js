@@ -25,7 +25,6 @@ module.exports = {
         'Laptop': '1440px',
         'Desktop1': '1680px',
         'Desktop2': '1920px',
-        'desktop3': '2560px',
       },
     },
   },
