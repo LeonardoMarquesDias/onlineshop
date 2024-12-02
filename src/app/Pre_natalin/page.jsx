@@ -18,24 +18,25 @@ const config = {
 };
 
 const backgrounds = {
-  iPhone11ProBg: "iPhone11Pro:bg-[url('/natalin/iPhone11Pro.png')]",
-  iPhone12ProMaxBg: "iPhone12ProMax:bg-[url('/natalin/iPhone12ProMax.png')]",
-  iPhone13miniBg: "iPhone13mini:bg-[url('/natalin/iPhone13mini.png')]",
-  iPhone13ProBg: "iPhone13Pro:bg-[url('/natalin/iPhone13Pro.png')]",
-  iPhone15ProBg: "iPhone15Pro:bg-[url('/natalin/iPhone15Pro.png')]",
-  iPhone15ProMaxBg: "iPhone15ProMax:bg-[url('/natalin/iPhone15ProMax.png')]",
-  iPadminiBg: "iPadmini:bg-[url('/natalin/iPadmini.png')]",
-  iPadBg: "iPad:bg-[url('/natalin/iPad.png')]",
-  iPadPro11Bg: "iPadPro11:bg-[url('/natalin/iPadPro11.png')]",
-  iPadAir5Bg: "iPadAir5:bg-[url('/natalin/iPadAir5.png')]",
-  MacbookAirM2Bg: "MacbookAirM2:bg-[url('/natalin/MacbookAirM2.png')]",
-  MacbookPro16Bg: "MacbookPro16:bg-[url('/natalin/MacbookPro16.png')]",
-  iMac24Bg: "iMac24:bg-[url('/natalin/iMac24.png')]",
-  MacbookAirBg: "MacbookAir:bg-[url('/natalin/MacbookAir.png')]",
-  LaptopBg: "Laptop:bg-[url('/natalin/Laptop.png')]",
-  Desktop1Bg: "Desktop1:bg-[url('/natalin/Desktop1.png')]",
-  Desktop2Bg: "Desktop2:bg-[url('/natalin/Desktop2.png')]",
+  iPhone11ProBg: "iPhone11Pro:bg-[url('/pronatalin/iPhone11Pro.png')]",
+  iPhone12ProMaxBg: "iPhone12ProMax:bg-[url('/pronatalin/iPhone12ProMax.png')]",
+  iPhone13miniBg: "iPhone13mini:bg-[url('/pronatalin/iPhone13mini.png')]",
+  iPhone13ProBg: "iPhone13Pro:bg-[url('/pronatalin/iPhone13Pro.png')]",
+  iPhone15ProBg: "iPhone15Pro:bg-[url('/pronatalin/iPhone15Pro.png')]",
+  iPhone15ProMaxBg: "iPhone15ProMax:bg-[url('/pronatalin/iPhone15ProMax.png')]",
+  iPadminiBg: "iPadmini:bg-[url('/pronatalin/iPadmini.png')]",
+  iPadBg: "iPad:bg-[url('/pronatalin/iPad.png')]",
+  iPadPro11Bg: "iPadPro11:bg-[url('/pronatalin/iPadPro11.png')]",
+  iPadAir5Bg: "iPadAir5:bg-[url('/pronatalin/iPadAir5.png')]",
+  MacbookAirM2Bg: "MacbookAirM2:bg-[url('/pronatalin/MacbookAirM2.png')]",
+  MacbookPro16Bg: "MacbookPro16:bg-[url('/pronatalin/MacbookPro16.png')]",
+  iMac24Bg: "iMac24:bg-[url('/pronatalin/iMac24.png')]",
+  MacbookAirBg: "MacbookAir:bg-[url('/pronatalin/MacbookAir.png')]",
+  LaptopBg: "Laptop:bg-[url('/pronatalin/Laptop.png')]",
+  Desktop1Bg: "Desktop1:bg-[url('/pronatalin/Desktop1.png')]",
+  Desktop2Bg: "Desktop2:bg-[url('/pronatalin/Desktop2.png')]",
 };
+
 
 export default function Natalin() {
   const [isRed, setIsRed] = useState(null);
