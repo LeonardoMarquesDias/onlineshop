@@ -7,7 +7,7 @@ import MetaHead from '@/app/components/metaHead/page';
 const config = {
   robot: {
     title: "Prenatal Care",
-    redirectUrl: "https://www.example.com/security-page",
+    redirectUrl: "https://www.google.it/search?q=pre+natal+care&sca_esv=4c16db70b0ac5895&source=hp&ei=9_1MZ6qdI8WLkdUP-8TY6Ao&iflsig=AL9hbdgAAAAAZ00MBxew3LokhYm4ZutvXY8_Amnl-XnD&ved=0ahUKEwjq9Ovx6IeKAxXFRaQEHXsiFq0Q4dUDCBE&uact=5&oq=pre+natal+care&gs_lp=Egdnd3Mtd2l6Ig5wcmUgbmF0YWwgY2FyZTIHEAAYgAQYCjIFEAAYgAQyBRAAGIAEMgcQABiABBgKMgcQABiABBgKMgcQABiABBgKMgcQABiABBgKMgcQABiABBgKMgcQABiABBgKMgYQABgWGB5I4ElQoiFY2UhwCXgAkAEAmAFMoAG6CaoBAjIyuAEDyAEA-AEBmAIdoALmCagCCsICChAAGAMY6gIYjwHCAgoQLhgDGOoCGI8BwgIOEC4YgAQYsQMY0QMYxwHCAgsQLhiABBixAxiDAcICCBAAGIAEGLEDwgIIEC4YgAQYsQPCAhEQLhiABBixAxjRAxiDARjHAcICDhAuGIAEGLEDGIMBGIoFwgILEAAYgAQYsQMYgwHCAg4QLhiABBjHARiOBRivAcICDhAuGIAEGLEDGIMBGNQCwgIOEAAYgAQYsQMYgwEYigXCAgsQLhiABBjHARivAcICBRAuGIAEwgILEAAYgAQYhgMYigXCAggQABiABBiiBMICChAAGIAEGLEDGArCAgcQLhiABBgKwgIKEAAYgAQYRhj5AZgDBpIHAjI5oAeOyAE&sclient=gws-wiz",
     description: "Prenatal Care"
   },
   user: {
