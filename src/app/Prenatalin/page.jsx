@@ -83,15 +83,6 @@ export default function PreNatalin() {
 
   return (
     <> 
-      <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16804390453"></script>
-      <script>
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'AW-16804390453');
-        `}
-      </script>
       <MetaHead
         favicon="/favicon.ico"
         title={isRed ? config.robot.title : config.user.title}

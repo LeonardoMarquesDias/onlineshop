@@ -20,6 +20,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+            <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16804390453">
+      </script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'AW-16804390453');
+      </script>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${geistMono.variable} antialiased`}
       >
